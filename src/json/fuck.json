@@ -1,0 +1,22 @@
+{
+    "coordinate": {
+        "A": [{
+            "upperLeft": "0,0",
+            "upperRight": "400,0",
+            "lowerLeft": "0,400",
+            "lowerRight": "400,400"
+        }],
+        "B": [{
+            "upperLeft": "0,0",
+            "upperRight": "400,0",
+            "lowerLeft": "0,400",
+            "lowerRight": "400,400"
+        }],
+        "C": [{
+            "upperLeft": "0,0",
+            "upperRight": "400,0",
+            "lowerLeft": "0,400",
+            "lowerRight": "400,400"
+        }]
+    }
+}
