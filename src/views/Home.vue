@@ -1,5 +1,5 @@
     <template>
-      <div id="app">
+        <div id="app">
         <v-app id="inspire">
         <Navbar></Navbar>
         <v-main>
@@ -42,6 +42,7 @@
         >
         <v-col>
         <v-btn 
+        id="dd"
         rounded dark elevation="5" x-large href="/findStarGazingSpots" 
         data-aos="zoom-in"
         data-aos-duration="500"
@@ -55,16 +56,28 @@
         mdi-checkbox-marked-circle
         </v-icon>
         </v-btn>
-        <div v-show="top" style="position:fixed;z-index:500;cursor:pointer;left:96%"><svg @click="gotoTop" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="green" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+        <div 
+        id="toTopButton"
+        v-scroll-to="{
+        el: '#app',
+        duration: 500,
+        lazy: false,
+        easing: 'linear',
+        offset: -200,
+        force: true,
+        cancelable: true,
+        x: false,
+        y: true
+        }"
+        @clcik="toTop(e)" style="position:fixed;z-index:500;cursor:pointer;left:96%;display:none"><svg  xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="green" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
         </svg></div>
         </v-col>
         </v-row>
         <!--  -->
 
-        
-   
-        <v-row sm12 style="background-color:#e9c46a;" 
+
+        <v-row id="starPosition" sm12 style="background-color:#e9c46a;" 
         >
         <v-col>
         <v-card 
@@ -82,7 +95,7 @@
         </template>
         <v-img
         height="250"
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+        src="../assets/武嶺.jpg"
         ></v-img>
         <v-card-title></v-card-title>
         <v-card-text>
@@ -103,9 +116,9 @@
         </div>
         </v-row>
         <div class="my-4 subtitle-1">
-        $ • Italian, Cafe
+        <h5>台中武嶺農場</h5>
         </div>
-        <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+        <div>標高3275公尺，是台灣公路海拔的最高點，此地正位於合歡山主峰與東峰之間的埡口鞍部</div>
         </v-card-text>
         <v-divider class="mx-4"></v-divider>
         <v-card-text>
@@ -134,7 +147,7 @@
         </template>
         <v-img
         height="250"
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+        src="../assets/望高瞭.jpg"
         ></v-img>
         <v-card-title></v-card-title>
         <v-card-text>
@@ -155,9 +168,9 @@
         </div>
         </v-row>
         <div class="my-4 subtitle-1">
-        $ • Italian, Cafe
+        <h5>台中望高瞭觀景平台</h5>
         </div>
-        <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+        <div>望高寮又稱「王田坎」，站在眺望平台可以看到三地萬家燈火的夜景</div>
         </v-card-text>
         <v-divider class="mx-4"></v-divider>
         <v-card-text>
@@ -186,7 +199,7 @@
         </template>
         <v-img
         height="250"
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+        src="../assets/清境農場.jpg"
         ></v-img>
         <v-card-title></v-card-title>
         <v-card-text>
@@ -207,9 +220,9 @@
         </div>
         </v-row>
         <div class="my-4 subtitle-1">
-        $ • Italian, Cafe
+        <h5>南投清境農場</h5>
         </div>
-        <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+        <div>國際認可為「暗空公園」。白天有著綠油油美麗的風景，一到了晚上更是令人談為觀止！</div>
         </v-card-text>
         <v-divider class="mx-4"></v-divider>
         <v-card-text>
@@ -228,13 +241,13 @@
         <v-row class="text-center" align="end" style="height:150px;background-color:#edf6f9">
         <v-col>
         <h2 
-        data-aos="zoom-in-up"
+        data-aos="zoom-in-down"
         data-aos-once="true"><v-icon large>mdi-arrow-down-thick</v-icon>天象詳細資料</h2>
         </v-col>
         </v-row>
         <!--  -->
 
-        <v-row>
+        <v-row id="asPosition">
         <v-expansion-panels>
         <v-expansion-panel>
         <v-row justify="center" >
@@ -293,10 +306,43 @@
         </v-expansion-panels>
         </v-row>
         <!--  -->
-
-        <v-row>
-          123
+        
+        <v-row id="vedioPosition" class="text-center" align="end" style="height:150px;background-color:#edf6f9">
+        <v-col>
+        <h2 
+        data-aos="zoom-in-down"
+        data-aos-once="true"><v-icon large>mdi-film</v-icon>影音視頻</h2>
+        </v-col>
         </v-row>
+        <!--  -->
+
+        <v-row style="background-color:#e9c46a;">
+        <v-col class="text-center">
+        <video data-aos="zoom-out-right" data-aos-duration="1000" data-aos-once="true" controls height="500px" width="800px">
+        <source src="../assets/cc.mp4" type="video/mp4">
+        <source src="../assets/cc.mp4" type="video/ogg">
+        </video>
+        </v-col>
+        <v-col data-aos="zoom-out-left" data-aos-duration="1000" data-aos-once="true" style="background-color:rgba(255,255,255,0.3)">
+        <h4>影片介紹</h4>
+        <v-card style="background-color:rgba(255,255,255,0.5)">
+        <v-card-title>sdjisdjsidj</v-card-title>
+        <v-divider class="mr-10"></v-divider>
+        <v-card-text>1231easdasdasfsadfsdfasdfsfd</v-card-text>
+        </v-card>
+        </v-col>
+        <!-- <v-col cols="8">
+        <VideoPlayer
+        id="cc"
+        class="vjs-custom-skin"
+        :options="playerOptions"
+        :playsinline="true"
+        />
+        </v-col> -->
+        </v-row>
+        <!--  -->
+
+
 
         
         </v-container>  
@@ -313,13 +359,40 @@ import axios from 'axios';
 import AOS from 'aos';
 
 export default {
- 
    /*eslint-disable*/
    components:{
     Navbar
    },
     data() {
         return {
+        ops: {
+        rail: {
+          opacity: '0.2',
+          background: undefined,
+          border: '1px solid #cecece',
+          size: '15px'
+        },
+        bar: {
+          background: '#00ff00',
+          keepShow: false,
+          size: '10px',
+          minSize: 0.2
+        },
+        scrollButton: {
+          enable: true,
+          background: '#cecece'
+        },
+        scrollPanel: {
+          easing: 'easeInQuad',
+          speed: 200
+        },
+        vuescroll: {
+          wheelScrollDuration: 0,
+          wheelDirectionReverse: false,
+          locking: true,
+          checkShifKey: true
+        }
+      },
         position:
         {
         C10017: "310 30",
@@ -346,8 +419,6 @@ export default {
         C10016: "15 250"}
         ,
         taiwanCountry:[],   
-      
-     
       planetContent:[
         { 
           name:"水星",
@@ -377,13 +448,11 @@ export default {
           name:"海王星",
           content:"在寶瓶座，順行，視星等: +8.0→+7.9，15日過中天時刻為9時58分。"
         },
-      ],
-      top:false,
-       
-      
+        ],
+        top:false,
         }
-    },
-     computed: {
+        },
+        computed: {
       height () {
         alert(this.$vuetify.breakpoint.name)
         switch (this.$vuetify.breakpoint.name) {
@@ -396,6 +465,7 @@ export default {
       },
     },
     mounted() {
+      
       alert(this.$vuetify.breakpoint.name)
        window.addEventListener('scroll',this.windowScrollListener); 
 
@@ -453,15 +523,13 @@ console.log(AOS)
        windowScrollListener(){
        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
        if(scrollTop >= 300){
-         this.top = true;
+         $('#toTopButton').fadeIn()
        }
        else{
-        this.top = false;
+          $('#toTopButton').fadeOut();
       }
       },
-      gotoTop(){
-        scrollTo(0,0)
-      }
+      
 
  
 }

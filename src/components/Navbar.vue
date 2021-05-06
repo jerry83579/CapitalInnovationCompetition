@@ -2,19 +2,33 @@
     <div>
         <v-app-bar
         app>
-        <v-app-bar-title><a href="home" style="color:black;text-decoration:none">觀星氣象大師</a></v-app-bar-title>
+        <v-app-bar-title><a href="/home"  style="color:black;text-decoration:none">觀星氣象大師</a></v-app-bar-title>
         <v-divider vertical class="ml-3 "></v-divider>
-        <v-col cols="2" class="d-md-none d-lg-flex d-none"></v-col>
-        <a style="text-decoration:none" v-for="(items,index) in menu" :key="index.name" :href="items.href"><ul class="mt-3 mx-4 menutext d-none d-lg-flex d-xl-none" >
+        <v-col cols="2"></v-col>
+        <a style="text-decoration:none" 
+        class="d-none d-lg-flex d-xl-flex"
+        v-scroll-to="{
+        el: items.position,
+        duration: 500,
+        lazy: false,
+        easing: 'linear',
+        offset: -200,
+        force: true,
+        cancelable: true,
+        x: false,
+        y: true
+        }"
+        v-for="(items,index) in menu" :key="index.name"><ul class="mt-3 mx-4 menutext" >
         <li>{{items.title}}</li>
         </ul></a>
-        <v-col cols="3" class="mt-3">
+        <v-col  class="mt-3 col-sm-4 col-lg-3 offset-sm-2 offset-lg-0">
         <v-autocomplete 
-        class="d-none d-lg-flex d-xl-none"
+        class="d-lg-none d-md-flex d-lg-flex"
         prepend-icon="mdi-magnify" hide-no-data  hide-selected  
         label="搜尋欲前往地區">
         </v-autocomplete>
         </v-col>
+        <div class="d-lg-none d-md-flex">123</div>
         </v-app-bar>
 
      
@@ -30,24 +44,27 @@ export default {
         {
           index: "1",
           title: "熱門觀星景點",
-          href:"/stargazingSpot",
+          position:"#starPosition"
         },
         {
           index: "2",
           title: "每月天象",
-          href:"/AstronomicalKnowledge",
+          position:"#asPosition"
         },
         {
           index: "3",
-          title: "天文影音",href:"",
+          title: "天文影音",
+          position:"#vedioPosition",
         },
         {
           index: "4",
-          title: "意見箱",href:"",
+          title: "意見箱",
+          position:"#sugPosition"
         },
         {
           index: "5",
           title: "Q&A",
+          position:"#qaPosition"
         },
         
       ],
